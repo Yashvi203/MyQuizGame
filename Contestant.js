@@ -6,30 +6,30 @@ class Contestant {
     }
   
     getCount(){
-      var playerCountRef = database.ref('playerCount');
-      playerCountRef.on("value",(data)=>{
-        playerCount = data.val();
+      var contestantCountRef = database.ref('contestantCount');
+      contestantCountRef.on("value",(data)=>{
+        contestantCount = data.val();
       })
     }
   
     updateCount(count){
       database.ref('/').update({
-        playerCount: count
+        contestantCount: count
       });
     }
   
     update(){
-      var playerIndex = "players/player" + this.index;
-      database.ref(playerIndex).set({
+      var contestantIndex = "contestants/contestant" + this.index;
+      database.ref(contestantIndex).set({
         name:this.name,
-        distance:this.distance
+        answer:this.answer
       });
     }
   
-    static getPlayerInfo(){
-      var playerInfoRef = database.ref('players');
-      playerInfoRef.on("value",(data)=>{
-        allPlayers = data.val();
+    static getcontestantInfo(){
+      var contestantInfoRef = database.ref('contestants');
+      contestantInfoRef.on("value",(data)=>{
+        allcontestants = data.val();
       })
     }
   }
